@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basketball Portfolio - Cécile CHANET</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f6fa;
+      color: #2f3640;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #d9b382, #f4e2d8);
+      color: #2f3640;
+      padding: 3rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 0 0 25px 25px;
+      flex-wrap: wrap;
+    }
+    .banner-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex: 1;
+      min-width: 0;
+    }
+    .profile-pic1 {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 20%;
+	  display: block;
+      border: 3px solid #ecf0f1;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+	.profile-pic2 {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 20%;
+	  display: block;
+      border: 3px solid #ecf0f1;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+	  background-color: white; /* ou une autre couleur selon ton design */
+
+    }
+    .intro-text {
+      text-align: center;
+      flex: 1;
+    }
+    .intro-text h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .intro-text p {
+      margin-top: 0.3rem;
+      font-size: 1.3rem;
+      opacity: 0.8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .basketball-container {
+      font-size: 100px;
+      line-height: 1;
+      animation: bounce 2.5s ease-in-out infinite;
+      user-select: none;
+      flex-shrink: 0;
+      margin-left: 2rem;
+      color: #e67e22;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.25));
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-left: 8px solid #d9b382;
+    }
+    h2 {
+      color: #a86e3c;
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .video-wrapper iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #2f3640;
+      color: #fff;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    .button {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: #d9b382;
+      color: #2f3640;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+    .button:hover {
+      background: #c89a64;
+    }
+    .work-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+    .work-circle:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    }
+    .tooltip {
+      display: none;
+      position: absolute;
+      top: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+	  border: 2px solid #d9b382;
+      color: black;
+      padding: 1rem;
+      border-radius: 10px;
+      width: 250px;
+      text-align: center;
+      font-size: 0.9rem;
+      z-index: 10;
+    }
+	.tooltip ul {
+	  text-align: left;
+	  padding-left: 1.2em; /* pour laisser l’espace aux puces */
+	  margin: 0; /* optionnel, ajuste selon ton design */
+	  background-color: transparent;
+	}
+    .work-circle:hover .tooltip {
+      display: block;
+    }
+    .work-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .linkedin-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #ffffff;
+      padding: 1rem 1.5rem;
+      border: 2px solid #0077b5;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: #0077b5;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .linkedin-card:hover {
+      background: #0077b5;
+      color: white;
+    }
+    .linkedin-icon {
+      font-size: 1.8rem;
+    }
+
+    /* Bouton langue simplifié */
+    #lang-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background-color: transparent;
+      border: 2px solid #d9b382;
+      color: #d9b382;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      user-select: none;
+      z-index: 1000;
+    }
+    #lang-btn:hover {
+      background-color: #d9b382;
+      color: #2f3640;
+      border-color: #c89a64;
+    }
+	.work-grid {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	  gap: 2rem;
+	  text-align: center;
+	}
+
+	.work-grid > div {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	}
+
+
+
+  </style>
+</head>
+<body>
+  <button id="lang-btn" aria-label="Changer de langue">FR</button>
+
+  <header>
+    <div class="banner-left">
+      <img src="Dassault 2.jpg" alt="Photo de Profil" class="profile-pic1" />
+      <div class="intro-text">
+        <h1 data-lang="fr">Cécile CHANET</h1>
+        <h1 data-lang="en" style="display:none;">Cécile CHANET</h1>
+        <p data-lang="fr">Joueuse de Basketball & Diplômée en ingénierie biomédicale</p>
+        <p data-lang="en" style="display:none;">Basketball Player & Biomedical Engineering Graduate</p>
+      </div>
+    </div>
+    <div class="basketball-container">🏀</div>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2>🏀 <span data-lang="fr">Expérience Basketball</span><span data-lang="en" style="display:none;">Basketball Experience</span></h2>
+      <ul>
+        <li data-lang="fr">Joueuse en ligue Pré-Nationale (R1) – [2023 - 2026]</li>
+        <li data-lang="en" style="display:none;">Player in Pre-National League (R1) – [2023 - 2026]</li>
+        <li data-lang="fr">Participation à l’Open de France 3x3 – [2023]</li>
+        <li data-lang="en" style="display:none;">Participation in Open de France 3x3 – [2023]</li>
+        <li data-lang="fr">3ème du Championnat de France Universitaire – [2022 & 2024]</li>
+        <li data-lang="en" style="display:none;">Top 3 National University Championship – [2022 & 2024]</li>
+        <li data-lang="fr">Sportive de Haut Niveau (École d’ingénieur)</li>
+        <li data-lang="en" style="display:none;">High-Level Athlete (Engineering School)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🎓 <span data-lang="fr">Parcours Académique</span><span data-lang="en" style="display:none;">Academic Background</span></h2>
+      <ul>
+        <li data-lang="fr">Diplôme d’Ingénieur généraliste, ESILV, [2024]</li>
+        <li data-lang="en" style="display:none;">Generalist Engineering Degree, ESILV, [2024]</li>
+		<li data-lang="fr">DU Ingénieur Biomédical, Paris-Saclay IFSBM, [2024]</li>
+        <li data-lang="en" style="display:none;">Biomedical Engineer Universitary Degree, Paris-Saclay IFSBM, [2024]</li>
+        <li data-lang="fr">Diplômes de langue : TOEIC (B2), Cambridge Certificate (B2)</li>
+        <li data-lang="en" style="display:none;">English Certifications: TOEIC (B2), Cambridge Certificate (B2)</li>
+		<li data-lang="fr">CPGE, Lycée Bellevue TOULOUSE, [2021]</li>
+        <li data-lang="en" style="display:none;">Highly selective classes to prepare for engineering exams, Bellevue Highschool TOULOUSE, [2021]</li>
+		<li data-lang="fr">Bac S-SI section sportive basket, Lycée Jean Jaurès CARMAUX, [2019]</li>
+        <li data-lang="en" style="display:none;">Baccalauréat engineering sciences speciality & Basketball student-athlete program, Jean Jaurès Highschool CARMAUX, [2019]</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>💼 <span data-lang="fr">Parcours Professionnel</span><span data-lang="en" style="display:none;">Professional Experience</span></h2>
+      <div class="work-grid">
+        <div>
+          <div style="text-align: center; margin-bottom: 0.5rem; font-weight: bold;" data-lang="fr">Centre Hospitalier Emile Roux</div>
+          <div style="text-align: center; margin-bottom: 0.5rem; font-weight: bold; display:none;" data-lang="en">Centre Hospitalier Emile Roux</div>
+          <div class="work-circle">
+            <!-- <span>Logo 1</span> -->
+			<img src="CHER Logo.jpg" alt="CHER Logo" class="profile-pic2" />
+            <div class="tooltip" data-lang="fr">
+			  <ul>
+			  <strong>Ingénieure Biomédicale au CH Emile Roux:</strong>
+				<li>Responsable de service</li>
+				<li>Gestion de budget</li>
+				<li>Gestion d'équipe</li>
+				<li>Gestion de l'entièreté des dispositifs biomédicaux du centre</li>
+			  </ul>
+			</div>
+            <div class="tooltip" data-lang="en" style="display:none;">
+				<ul>
+				  <strong>Hospital Centre Emile Roux Biomedical Engineer:</strong>
+					<li>Service Manager</li>
+					<li>Budget management</li>
+					<li>Team management</li>
+					<li>Medical devices management of the entire hospital</li>
+				</ul>
+			</div>
+          </div>
+        </div>
+        <div>
+          <div style="text-align: center; margin-bottom: 0.5rem; font-weight: bold;" data-lang="fr">Microfluidics Innovation Center</div>
+          <div style="text-align: center; margin-bottom: 0.5rem; font-weight: bold; display:none;" data-lang="en">Microfluidics Innovation Center</div>
+          <div class="work-circle">
+            <!-- <span>Logo 2</span> -->
+			<img src="MIC Logo.jpg" alt="MIC Logo" class="profile-pic1" />
+            <div class="tooltip" data-lang="fr">
+			  <ul>
+			  <strong>Stagiaire au Microfluidics Innovation Center:</strong>
+				<li>Recherche & Innovation</li>
+				<li>Microfluidique et techniques associées</li>
+				<li>Projet en collaboration avec l'Institut Pasteur</li>
+			  </ul>
+			</div>
+            <div class="tooltip" data-lang="en" style="display:none;">
+				<ul>
+				  <strong>Microfluidics Innovation Center intern:</strong>
+					<li>Research & Inovation</li>
+					<li>Microfluidics and associated technics</li>
+					<li>Common project with Institut Pasteur</li>
+				</ul>
+			</div>
+          </div>
+        </div>
+        <div>
+          <div style="text-align: center; margin-bottom: 0.5rem; font-weight: bold;" data-lang="fr">Brigade des Sapeurs Pompiers de Paris</div>
+          <div style="text-align: center; margin-bottom: 0.5rem; font-weight: bold; display:none;" data-lang="en">Paris Firefighters Brigade</div>
+          <div class="work-circle">
+            <!-- <span>Logo 3</span> -->
+			<img src="BSPP Logo.jpg" alt="BSPP Logo" class="profile-pic2" />
+            <div class="tooltip" data-lang="fr">
+			  <ul>
+			  <strong>Service Civique à la BSPP:</strong>
+				<li>Formation PSE 2</li>
+				<li>Secours à victime</li>
+				<li>Membre d'un équipage pour des gardes de 24h</li>
+			  </ul>
+			</div>
+            <div class="tooltip" data-lang="en" style="display:none;">
+				<ul>
+				  <strong>Service Civique into the BSPP:</strong>
+					<li>PSE 2 Formation</li>
+					<li>Victims first aid</li>
+					<li>Member of a crew for multiple 24 hours shift</li>
+				</ul>
+			</div>
+          </div>
+        </div>
+        <div>
+          <div style="text-align: center; margin-bottom: 0.5rem; font-weight: bold;" data-lang="fr">Dassault Systèmes</div>
+          <div style="text-align: center; margin-bottom: 0.5rem; font-weight: bold; display:none;" data-lang="en">Dassault Systèmes</div>
+          <div class="work-circle">
+            <!-- <span>Logo 4</span> -->
+			<img src="Dassault Logo.jpg" alt="Dassault Logo" class="profile-pic1" />
+            <div class="tooltip" data-lang="fr">
+			  <ul>
+			  <strong>Stagiaire à Dassault Systèmes:</strong>
+				<li>Recherche & Développement</li>
+				<li>Section véhicules et transports</li>
+				<li>Formation 3DExperience</li>
+				<li>Modélisation 3D, CATIA V5 et Solidworks</li>
+			  </ul>
+			</div>
+            <div class="tooltip" data-lang="en" style="display:none;">
+				<ul>
+				  <strong>Dassault Systèmes Intern:</strong>
+					<li>Research & Development</li>
+					<li>Vehicule and Transportation section</li>
+					<li>3DExperience formation</li>
+					<li>3D Modelisation, CATIA V5 and Solidworks</li>
+				</ul>
+			</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🎥 <span data-lang="fr">Vidéos Highlights</span><span data-lang="en" style="display:none;">Highlights Videos</span></h2>
+      <div class="video-wrapper">
+        <iframe src="[Lien vidéo]" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section>
+      <h2>🔗 <span data-lang="fr">LinkedIn</span><span data-lang="en" style="display:none;">LinkedIn</span></h2>
+      <a href="https://www.linkedin.com/in/cecile-chanet/" target="_blank" class="linkedin-card">
+        <span class="linkedin-icon">💼</span>
+        <span data-lang="fr">Accéder à mon profil LinkedIn</span>
+        <span data-lang="en" style="display:none;">Access my LinkedIn profile</span>
+      </a>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; <span data-lang="fr">Cécile CHANET</span><span data-lang="en" style="display:none;">Cécile CHANET</span> – Portfolio 2025</p>
+  </footer>
+
+  <script>
+    const langBtn = document.getElementById('lang-btn');
+    let currentLang = 'fr';
+
+    function updateLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+      });
+
+      langBtn.textContent = lang.toUpperCase();
+    }
+
+    langBtn.addEventListener('click', () => {
+      updateLanguage(currentLang === 'fr' ? 'en' : 'fr');
+    });
+
+    updateLanguage(currentLang);
+  </script>
+</body>
+</html>
